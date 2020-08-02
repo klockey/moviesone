@@ -1,6 +1,8 @@
 package com.example.moviesone;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // String[] mData;
      LayoutInflater inflater;
      View view;
+    private static final String Tag = "DescriptionActivity";
+
 
     public MyRecyclerViewAdapter(Context context, String[] mData) {
          inflater = LayoutInflater.from(context);
@@ -33,26 +37,43 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+
+        Log.d(Tag,"onBindViewHolder");
+
         //  holder.imageView.setImageResource(mData[position]); **
         Picasso.get().load(mData[position])
                      .into(holder.imageView);
+        System.out.println("click");
+
     }
+
 
     @Override
     public int getItemCount() {
         return mData.length;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         //TextView tv;
+
+        Context context;
 
         ImageView imageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            context = itemView.getContext();
+            itemView.setOnClickListener(this);
             imageView = (ImageView) itemView.findViewById(R.id.image_view);
+        }
 
+        @Override
+        public void onClick(View v) {
+            System.out.println("click");
+            Intent intent = new Intent(context, DescriptionActivity.class);
+            context.startActivity(intent);
         }
     }
+
 }
