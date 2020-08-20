@@ -2,34 +2,23 @@ package com.example.moviesone;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.moviesone.utils.JsonUtils;
-//import com.example.moviesone.utils.URLJson;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.net.URL;
-import java.text.BreakIterator;
 import com.example.moviesone.model.Movie;
-import java.util.concurrent.ExecutionException;
+
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    Movie[] mData;
+    static Movie[] mData;
     LayoutInflater inflater;
     private static final String Tag = "DescriptionActivity";
+    static Movie movie;
 
 
     public MyRecyclerViewAdapter(Context context, Movie[] mData) {
@@ -47,25 +36,26 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
-        Log.d(Tag,"onBindViewHolder");
+        Log.d(Tag,"onBindViewHolder position " + position);
         String response;
         String s = null;
 
-    //    Picasso.get().load("https://image.tmdb.org/t/p/w185/" + mData[position].getPoster_path())
-      //          .into(holder.imageView);
+        movie = mData[position];
 
+        Picasso.get().load("https://image.tmdb.org/t/p/w185" + mData[position].getPoster_path())
+                .into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-       // return mData.length;
-        return 5;
+        return mData.length;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         Context context;
         ImageView imageView;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,8 +66,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         @Override
         public void onClick(View v) {
-            System.out.println("click");
-            Intent intent = new Intent(context, DescriptionActivity.class);
+            Intent intent = new Intent(context, DescriptionActivity.class).putExtra("movie", mData[this.getAdapterPosition()]);
             context.startActivity(intent);
         }
     }

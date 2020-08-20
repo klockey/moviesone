@@ -1,24 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+
+
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="100">
 
     <ImageView
+        android:id="@+id/poster_image_iv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="379dp"
         android:layout_weight="70"
         android:scaleType="centerCrop"
-        android:id="@+id/image"
         android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Original Title: "
+            android:textSize="10sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/image_description"
+        android:id="@+id/original_title_tv"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:text="Canada"
-        android:textSize="20sp" />
+        android:textSize="10sp"
+        android:text="@string/original_title"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Synopsis: "
+            android:textSize="10sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/plot_synopsis_tv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="10sp"
+        android:text="@string/plot_synopsis"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Rating: "
+            android:textSize="10sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_rating_tv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="10sp"
+        android:text="@string/user_rating"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Release Date: "
+            android:textSize="10sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/release_date_tv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="10sp"
+        android:text="@string/release_date"/>
+    </LinearLayout>
 </LinearLayout>
+</ScrollView>

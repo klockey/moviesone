@@ -1,8 +1,9 @@
 package com.example.moviesone.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Movie {
+public class Movie implements Serializable {
    private String page;
    private String total_results;
    private String total_pages;
@@ -22,11 +23,8 @@ public class Movie {
    private String release_date;
    private String plot_synopsis;
    private String user_rating;
+   private String genre_id;
 
-//
-//    public Movie(String backdrop_path) {
-//      this.backdrop_path = backdrop_path;
-//    }
 
     public String getPage() {
         return page;
@@ -178,5 +176,13 @@ public class Movie {
 
     public void setUser_rating(String user_rating) {
         this.user_rating = user_rating;
+    }
+
+    public String getGenre_id() {
+        return genre_id;
+    }
+
+    public void setGenre_id(String genre_id) {
+        this.genre_id = genre_id;
     }
 }
